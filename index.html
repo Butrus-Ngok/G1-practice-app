@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ontario G1 Practice Test - Complete Study Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="logo-text">Ontario G1 Practice Test</div>
+            </div>
+            <p class="subtitle">Complete study guide with 77 Road Signs and 104 Rules of the Road questions from the official handbook</p>
+        </header>
+
+        <!-- Start Screen -->
+        <div id="startScreen" class="card start-screen">
+            <h1 class="card-title"><i class="fas fa-flag-checkered"></i> Choose Your Practice Test</h1>
+            <p>Select the type of test you'd like to practice. Each test randomly selects questions from the complete database.</p>
+            
+            <div class="test-options">
+                <div class="test-option" data-test-type="signs" onclick="selectTestType('signs')">
+                    <div class="option-icon">
+                        <i class="fas fa-traffic-light"></i>
+                    </div>
+                    <h3 class="option-title">Road Signs Only</h3>
+                    <p class="option-desc">Practice identifying Ontario road signs. 20 random questions selected from 77 total signs.</p>
+                    <div class="option-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-question-circle"></i>
+                            <span>20 of 77 Questions</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>15-20 min</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-option" data-test-type="rules" onclick="selectTestType('rules')">
+                    <div class="option-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="option-title">Rules of the Road</h3>
+                    <p class="option-desc">Test your knowledge of Ontario driving laws and regulations. 20 questions from 104 total.</p>
+                    <div class="option-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-question-circle"></i>
+                            <span>20 of 104 Questions</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>15-20 min</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-option" data-test-type="full" onclick="selectTestType('full')">
+                    <div class="option-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="option-title">Full Practice Test</h3>
+                    <p class="option-desc">Complete 40-question test simulating the actual G1 exam with both road signs and rules questions.</p>
+                    <div class="option-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-question-circle"></i>
+                            <span>40 Questions</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>30-40 min</span>
+                        </div>
+                    </div>
+                    <div class="hint">Most Realistic</div>
+                </div>
+            </div>
+            
+            <button id="startBtn" class="btn btn-lg" onclick="startTest()" disabled>
+                <i class="fas fa-play-circle"></i> Start Test
+            </button>
+            
+            <div class="quick-stats">
+                <div class="stat-box">
+                    <div class="stat-number">77</div>
+                    <div class="stat-label">Road Signs</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">104</div>
+                    <div class="stat-label">Rules Questions</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">181</div>
+                    <div class="stat-label">Total Questions</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quizContainer" class="card quiz-container">
+            <div class="quiz-header">
+                <div class="progress-info">
+                    <div class="progress-label">Question</div>
+                    <div class="progress-value" id="currentQuestion">1 / 20</div>
+                </div>
+                <div class="progress-info">
+                    <div class="progress-label">Score</div>
+                    <div class="progress-value" id="currentScore">0</div>
+                </div>
+                <div class="progress-info">
+                    <div class="progress-label">Time</div>
+                    <div class="progress-value" id="currentTime">0:00</div>
+                </div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div id="questionContainer" class="question-container">
+                <!-- Question content will be inserted here -->
+            </div>
+            
+            <div class="navigation-buttons">
+                <button id="prevBtn" class="btn btn-secondary" onclick="prevQuestion()">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button id="nextBtn" class="btn" onclick="nextQuestion()">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button id="submitBtn" class="btn" onclick="finishTest()" style="display: none;">
+                    <i class="fas fa-flag-checkered"></i> Finish Test
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Container -->
+        <div id="resultsContainer" class="card results-container">
+            <div class="results-header">
+                <h1 class="card-title"><i class="fas fa-chart-line"></i> Your Test Results</h1>
+                
+                <div class="score-circle">
+                    <div class="score-circle-bg" id="scoreCircle">
+                        <div class="score-circle-inner">
+                            <div class="score-percent" id="scorePercent">0%</div>
+                            <div class="score-text">Score</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 id="passFail" class="pass-fail pass">PASS</h2>
+                <p id="resultMessage">Congratulations! You passed the practice test.</p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="statCorrect">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="statIncorrect">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="statScore">0%</div>
+                    <div class="stat-label">Score</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="statTime">0:00</div>
+                    <div class="stat-label">Time</div>
+                </div>
+            </div>
+            
+            <div class="results-details">
+                <div class="detail-row">
+                    <span>Test Type:</span>
+                    <strong id="testTypeResult">Road Signs Only</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Passing Score:</span>
+                    <strong>80% (16/20 correct)</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Your Score:</span>
+                    <strong id="yourScoreResult">0/0 (0%)</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Questions Attempted:</span>
+                    <strong id="questionsAttempted">0</strong>
+                </div>
+            </div>
+            
+            <div id="reviewContainer" class="review-questions">
+                <!-- Review questions will be inserted here -->
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <button class="btn btn-lg" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Try Again (New Questions)
+                </button>
+                <button class="btn btn-secondary btn-lg" onclick="goToStart()" style="margin-left: 20px;">
+                    <i class="fas fa-home"></i> Back to Start
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© <span id="currentYear"></span> Ontario G1 Practice Test. Based on "Driver's Handbook Study Guide" PDF.</p>
+            <p>This is an unofficial study tool. Always refer to the official Ontario Driver's Handbook.</p>
+        </div>
+    </div>
+
+    <script src="quiz-data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
