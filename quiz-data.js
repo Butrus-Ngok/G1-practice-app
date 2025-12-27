@@ -209,61 +209,33 @@ const roadSignsQuestions = [
         question: "What does this sign indicate?", 
         image: "images/signs/15.png",
         options: [
-            "Keep to the right lane except when passing", 
-            "Keep to the right if you want to park", 
-            "No U-turns", 
-            "For right turns only"
+            "Truck entrance on the right side ahead", 
+            "No trucks allowed", 
+            "Slow down for truck", 
+            "Truck route"
         ],
-        correctAnswer: 0, 
-        category: "regulatory",
-        explanation: "This sign means you should keep to the right lane except when passing another vehicle."
+        correctAnswer: 3, 
+        category: "guide",
+        explanation: "This sign indicates a truck route. Trucks should follow this route to avoid restricted areas."
     },
     {
         id: 16, 
         question: "This sign indicates:", 
         image: "images/signs/16.png",
         options: [
-            "Parking is permitted", 
-            "You may not park between the signs during posted times", 
-            "No parking", 
-            "Weekend parking only"
+            "You may exit if you remain in right hand lane", 
+            "You must not drive in right hand lane under any circumstances", 
+            "End of highway, you must move into right hand lane", 
+            "Two-way left turn lane"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 2, 
         category: "regulatory",
-        explanation: "This sign indicates parking restrictions during specific times. Read the times posted to know when parking is prohibited."
+        explanation: "This sign indicates the end of a highway. You must move into the right-hand lane."
     },
     {
         id: 17, 
         question: "What does this sign mean?", 
         image: "images/signs/17.png",
-        options: [
-            "Care for pedestrian", 
-            "Watch for traffic signal", 
-            "Do not block intersection", 
-            "Do not slow down"
-        ],
-        correctAnswer: 2, 
-        category: "regulatory",
-        explanation: "This sign warns drivers not to enter the intersection if they cannot clear it completely. Blocking intersections is illegal."
-    },
-    {
-        id: 18, 
-        question: "This sign means:", 
-        image: "images/signs/18.png",
-        options: [
-            "Parking is only for vehicles displaying a valid disabled person parking permit", 
-            "No parking", 
-            "No standing", 
-            "Parking is not allowed for disabled persons"
-        ],
-        correctAnswer: 0, 
-        category: "regulatory",
-        explanation: "This sign reserves parking for vehicles with a valid disabled person parking permit. Unauthorized vehicles may be ticketed or towed."
-    },
-    {
-        id: 19, 
-        question: "What does this sign mean?", 
-        image: "images/signs/19.png",
         options: [
             "No right turn", 
             "Divided highway ends", 
@@ -275,9 +247,9 @@ const roadSignsQuestions = [
         explanation: "This sign warns that the divided highway ends ahead. Prepare for two-way traffic."
     },
     {
-        id: 20, 
+        id: 18, 
         question: "This sign indicates:", 
-        image: "images/signs/20.png",
+        image: "images/signs/18.png",
         options: [
             "You may exit if you remain in right hand lane", 
             "You must not drive in right hand lane under any circumstances", 
@@ -288,11 +260,10 @@ const roadSignsQuestions = [
         category: "regulatory",
         explanation: "This sign indicates the end of a highway. You must move into the right-hand lane."
     },
-    // Questions 21-40
     {
-        id: 21, 
-        question: "What does this sign indicate?", 
-        image: "images/signs/21.png",
+        id: 19, 
+        question: "What does this sign mean?", 
+        image: "images/signs/19.png",
         options: [
             "X-intersection for school vehicles", 
             "School crosswalk sign", 
@@ -304,9 +275,9 @@ const roadSignsQuestions = [
         explanation: "This sign indicates a school crossing ahead. Watch for children and follow crossing guard directions."
     },
     {
-        id: 22, 
+        id: 20, 
         question: "This sign warns of:", 
-        image: "images/signs/22.png",
+        image: "images/signs/20.png",
         options: [
             "School area ahead", 
             "Railway crossing ahead", 
@@ -317,783 +288,814 @@ const roadSignsQuestions = [
         category: "warning",
         explanation: "This sign warns of a railway crossing ahead. Be prepared to stop if lights are flashing."
     },
+    // Questions 21-40
     {
-        id: 23, 
-        question: "When you see this sign, you must:", 
-        image: "images/signs/23.png",
+        id: 21,
+        question: "When you see this sign, you must:",
+        image: "images/signs/21.png",
         options: [
-            "Stop sign 150 meters (500 feet) ahead", 
+            "Stop sign 150 meters (500 feet) ahead",
             "Bump 120 meters (400 feet) ahead", 
-            "Stop at all times", 
+            "Stop at all times",
             "Stop only if other vehicles are approaching"
         ],
-        correctAnswer: 2, 
+        correctAnswer: 2,
         category: "regulatory",
         explanation: "This is a stop sign. You must come to a complete stop at the stop line or before entering the intersection."
     },
     {
-        id: 24, 
-        question: "This sign indicates:", 
-        image: "images/signs/24.png",
+        id: 22,
+        question: "This sign indicates:",
+        image: "images/signs/22.png",
         options: [
-            "You must make a right turn only", 
+            "You must make a right turn only",
             "You must not make a left turn", 
-            "Hidden intersection ahead", 
+            "Hidden intersection ahead",
             "You are approaching a traffic island"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "regulatory",
         explanation: "This sign indicates that the lane is for right turns only."
     },
     {
-        id: 25, 
-        question: "What does this sign mean?", 
-        image: "images/signs/25.png",
+        id: 23,
+        question: "What does this sign mean?",
+        image: "images/signs/23.png",
         options: [
-            "No bicycles allowed", 
+            "No bicycles allowed",
             "Do not drive through", 
-            "Bicycle route", 
+            "Bicycle route",
             "No parking"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "regulatory",
         explanation: "This sign prohibits bicycles from using this roadway or path."
     },
     {
-        id: 26, 
-        question: "This sign indicates:", 
-        image: "images/signs/26.png",
+        id: 24,
+        question: "This sign indicates:",
+        image: "images/signs/24.png",
         options: [
-            "Snowmobiles may not use this road", 
+            "Snowmobiles may not use this road",
             "Snowmobile parking only", 
-            "Snowmobiles may use this road", 
+            "Snowmobiles may use this road",
             "Snowmobile repair shop ahead"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "regulatory",
         explanation: "This sign prohibits snowmobiles from using this roadway."
     },
     {
-        id: 27, 
-        question: "What does this sign mean?", 
-        image: "images/signs/27.png",
+        id: 25,
+        question: "What does this sign mean?",
+        image: "images/signs/25.png",
         options: [
-            "You may park in the designated area during the posted times", 
+            "You may park in the designated area during the posted times",
             "You may not park between the signs during the posted times", 
-            "No parking", 
+            "No parking",
             "Weekend parking only"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "regulatory",
         explanation: "This sign indicates no parking between the signs during the times posted."
     },
     {
-        id: 28, 
-        question: "This sign means:", 
-        image: "images/signs/28.png",
-        options: ["No stopping"],
-        correctAnswer: 0, 
+        id: 26,
+        question: "This sign means:",
+        image: "images/signs/26.png",
+        options: [
+            "No stopping",
+            "No parking allowed",
+            "No standing permitted",
+            "Temporary stopping allowed"
+        ],
+        correctAnswer: 0,
         category: "regulatory",
         explanation: "This sign prohibits stopping at any time, even temporarily."
     },
     {
-        id: 29, 
-        question: "What does this sign indicate?", 
-        image: "images/signs/29.png",
+        id: 27,
+        question: "What does this sign indicate?",
+        image: "images/signs/27.png",
         options: [
-            "Care for pedestrian", 
+            "Care for pedestrian",
             "Watch for traffic signal", 
-            "Do not block intersection", 
+            "Do not block intersection",
             "Do not slow down"
         ],
-        correctAnswer: 2, 
+        correctAnswer: 2,
         category: "regulatory",
         explanation: "This sign warns not to enter the intersection if you cannot clear it completely."
     },
     {
-        id: 30, 
-        question: "This sign indicates:", 
-        image: "images/signs/30.png",
+        id: 28,
+        question: "This sign indicates:",
+        image: "images/signs/28.png",
         options: [
-            "This lane is reserved for specific types of vehicles during certain times and days such as buses, taxis, bicycles and vehicles with more than three passengers", 
+            "This lane is reserved for specific types of vehicles during certain times and days such as buses, taxis, bicycles and vehicles with more than three passengers",
             "No buses allowed on the specified lane during times and days posted", 
-            "No stopping during the times and days posted", 
+            "No stopping during the times and days posted",
             "Do not enter between the times and days posted"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "guide",
         explanation: "This is an HOV (High Occupancy Vehicle) lane sign. It indicates reserved lane usage during specified times."
     },
     {
-        id: 31, 
-        question: "What does this sign mean?", 
-        image: "images/signs/31.png",
+        id: 29,
+        question: "What does this sign mean?",
+        image: "images/signs/29.png",
         options: [
-            "Intersection ahead", 
+            "Intersection ahead",
             "Narrow bridge ahead", 
-            "Paved surface ends ahead", 
+            "Paved surface ends ahead",
             "The road ahead is split"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "warning",
         explanation: "This sign warns of an intersection ahead. Be prepared for crossing traffic."
     },
     {
-        id: 32, 
-        question: "This sign indicates:", 
-        image: "images/signs/32.png",
+        id: 30,
+        question: "This sign indicates:",
+        image: "images/signs/30.png",
         options: [
-            "Keep to the right of the traffic island", 
+            "Keep to the right of the traffic island",
             "Road turns right then left", 
-            "Winding road ahead", 
+            "Winding road ahead",
             "Pass other traffic on the right"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "guide",
         explanation: "This sign indicates you should keep to the right of the traffic island or divider."
     },
     {
-        id: 33, 
-        question: "What does this sign mean?", 
-        image: "images/signs/33.png",
+        id: 31,
+        question: "What does this sign mean?",
+        image: "images/signs/31.png",
         options: [
-            "Destination board", 
+            "Destination board",
             "School zone—watch for Children playing", 
-            "Provincial park", 
+            "Provincial park",
             "Pedestrian control sign"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "guide",
         explanation: "This is a destination sign showing directions and distances to various locations."
     },
     {
-        id: 34, 
-        question: "This sign warns of:", 
-        image: "images/signs/34.png",
+        id: 32,
+        question: "This sign warns of:",
+        image: "images/signs/32.png",
         options: [
-            "Stop sign ahead", 
+            "Stop sign ahead",
             "Yield right-of-way", 
-            "Dead end street ahead", 
+            "Dead end street ahead",
             "Slow moving vehicle"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "warning",
         explanation: "This sign warns that there is a stop sign ahead. Begin slowing down."
     },
     {
-        id: 35, 
-        question: "What does this sign indicate?", 
-        image: "images/signs/35.png",
+        id: 33,
+        question: "What does this sign indicate?",
+        image: "images/signs/33.png",
         options: [
-            "Going straight is allowed", 
+            "Going straight is allowed",
             "No right turn", 
-            "No left turn", 
+            "No left turn",
             "Do not drive straight through the intersection"
         ],
-        correctAnswer: 3, 
+        correctAnswer: 3,
         category: "regulatory",
         explanation: "This sign prohibits driving straight through the intersection."
     },
     {
-        id: 36, 
-        question: "This sign means:", 
-        image: "images/signs/36.png",
+        id: 34,
+        question: "This sign means:",
+        image: "images/signs/34.png",
         options: [
-            "Parking is only for vehicles displaying a valid disabled person parking permit", 
+            "Parking is only for vehicles displaying a valid disabled person parking permit",
             "No parking", 
-            "No standing", 
+            "No standing",
             "Parking is not allowed for a disable person with a permit"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "regulatory",
         explanation: "This sign reserves parking for vehicles with a valid disabled person parking permit."
     },
-    // Questions 37-52
     {
-        id: 37, 
-        question: "What does this sign mean?", 
-        image: "images/signs/37.png",
+        id: 35,
+        question: "What does this sign mean?",
+        image: "images/signs/35.png",
         options: [
-            "No bicycles", 
+            "No bicycles",
             "No pedestrians allowed", 
-            "No children allowed", 
+            "No children allowed",
             "Dogs only"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "regulatory",
         explanation: "This sign prohibits pedestrians from entering this area or roadway."
     },
     {
-        id: 38, 
-        question: "This sign indicates:", 
-        image: "images/signs/38.png",
+        id: 36,
+        question: "This sign indicates:",
+        image: "images/signs/36.png",
         options: [
-            "Only for picking up and dropping off passengers if you have a disabled persons permit", 
+            "Only for picking up and dropping off passengers if you have a disabled persons permit",
             "Standing area for disabled persons only", 
-            "No parking", 
+            "No parking",
             "Parking is permitted"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "regulatory",
         explanation: "This sign indicates an area reserved for picking up and dropping off passengers with disabilities."
     },
+    // Questions 37-52
     {
-        id: 39, 
-        question: "What does this sign mean?", 
-        image: "images/signs/39.png",
+        id: 37,
+        question: "What does this sign mean?",
+        image: "images/signs/37.png",
         options: [
-            "School area", 
+            "School area",
             "Bumpy road", 
-            "Do not stand or stop in this area", 
+            "Do not stand or stop in this area",
             "No bicycles allowed on this road"
         ],
-        correctAnswer: 2, 
+        correctAnswer: 2,
         category: "regulatory",
         explanation: "This sign prohibits both standing and stopping in this area."
     },
     {
-        id: 40, 
-        question: "This sign indicates:", 
-        image: "images/signs/40.png",
+        id: 38,
+        question: "This sign indicates:",
+        image: "images/signs/38.png",
         options: [
-            "This lane is for buses only", 
+            "This lane is for buses only",
             "This lane is for trucks only", 
-            "This lane is not for bicycles", 
+            "This lane is not for bicycles",
             "This lane is for bicycles only"
         ],
-        correctAnswer: 3, 
+        correctAnswer: 3,
         category: "guide",
         explanation: "This sign indicates a lane reserved exclusively for bicycles."
     },
     {
-        id: 41, 
-        question: "What does this sign mean?", 
-        image: "images/signs/41.png",
+        id: 39,
+        question: "What does this sign mean?",
+        image: "images/signs/39.png",
         options: [
-            "Keep to the right lane except when passing (for climbing lanes)", 
+            "Keep to the right lane except when passing (for climbing lanes)",
             "Keep right if you want to park", 
-            "No U-turns", 
+            "No U-turns",
             "For right turns"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "regulatory",
         explanation: "This sign advises drivers to keep right except when passing, especially on hills with climbing lanes."
     },
     {
-        id: 42, 
-        question: "This sign warns of:", 
-        image: "images/signs/42.png",
+        id: 40,
+        question: "This sign warns of:",
+        image: "images/signs/40.png",
         options: [
-            "No left turns", 
+            "No left turns",
             "Merging traffic ahead", 
-            "Road branching off ahead", 
+            "Road branching off ahead",
             "Hidden intersection"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "warning",
         explanation: "This sign warns that traffic may be merging from the right ahead."
     },
     {
-        id: 43, 
-        question: "What does this sign indicate?", 
-        image: "images/signs/43.png",
+        id: 41,
+        question: "What does this sign indicate?",
+        image: "images/signs/41.png",
         options: [
-            "No U-turns", 
+            "No U-turns",
             "No left turns", 
-            "Right turn ahead", 
+            "Right turn ahead",
             "The side-road at the intersection ahead does not have a clear view of traffic"
         ],
-        correctAnswer: 3, 
+        correctAnswer: 3,
         category: "warning",
         explanation: "This sign warns that side roads at the intersection ahead have limited visibility."
     },
     {
-        id: 44, 
-        question: "A red circle means:", 
-        image: "images/signs/44.png",
+        id: 42,
+        question: "A red circle means:",
+        image: "images/signs/42.png",
         options: [
-            "Do not enter roadway", 
+            "Do not enter roadway",
             "Do not enter unless local traffic", 
-            "A traffic circle ahead", 
+            "A traffic circle ahead",
             "Prohibited sign"
         ],
-        correctAnswer: 3, 
+        correctAnswer: 3,
         category: "regulatory",
         explanation: "A red circle indicates a prohibited action. The symbol inside shows what is prohibited."
     },
     {
-        id: 45, 
-        question: "This sign means:", 
-        image: "images/signs/45.png",
+        id: 43,
+        question: "This sign means:",
+        image: "images/signs/43.png",
         options: [
-            "Merge with traffic, two roads are equally responsible", 
+            "Merge with traffic, two roads are equally responsible",
             "Hidden intersection", 
-            "No U-turns", 
+            "No U-turns",
             "No left turns"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "warning",
         explanation: "This sign indicates that two roadways are merging. Both streams of traffic have equal responsibility."
     },
     {
-        id: 46, 
-        question: "What does this sign warn of?", 
-        image: "images/signs/46.png",
+        id: 44,
+        question: "What does this sign warn of?",
+        image: "images/signs/44.png",
         options: [
-            "Paved surface ends ahead", 
+            "Paved surface ends ahead",
             "Watch for falling rocks", 
-            "School zone sign", 
+            "School zone sign",
             "Do not block intersection"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "warning",
         explanation: "This sign warns that the paved surface ends ahead. The road surface will change."
     },
     {
-        id: 47, 
-        question: "This sign indicates:", 
-        image: "images/signs/47.png",
+        id: 45,
+        question: "This sign indicates:",
+        image: "images/signs/45.png",
         options: [
-            "Bicycles are not allowed", 
+            "Bicycles are not allowed",
             "Bicycle crossing ahead", 
-            "No parking", 
+            "No parking",
             "No left turns"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "warning",
         explanation: "This sign warns that there is a bicycle crossing ahead. Watch for cyclists."
     },
     {
-        id: 48, 
-        question: "What does this sign mean?", 
-        image: "images/signs/48.png",
+        id: 46,
+        question: "What does this sign mean?",
+        image: "images/signs/46.png",
         options: [
-            "Safety check ahead", 
+            "Safety check ahead",
             "Warns of a steep hill ahead", 
-            "Pavement ends, 500 feet ahead", 
+            "Pavement ends, 500 feet ahead",
             "Bumpy road ahead"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "warning",
         explanation: "This sign indicates there is a safety inspection station ahead where vehicles may be checked."
     },
-    // Questions 49-64
     {
-        id: 49, 
-        question: "This sign indicates:", 
-        image: "images/signs/49.png",
+        id: 47,
+        question: "This sign indicates:",
+        image: "images/signs/47.png",
         options: [
-            "Right lane ends", 
+            "Right lane ends",
             "Hidden intersection ahead", 
-            "You are approaching a steep hill", 
+            "You are approaching a steep hill",
             "No parking"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "warning",
         explanation: "This sign warns that the right lane is ending. Merge left when safe."
     },
     {
-        id: 50, 
-        question: "What does this sign warn of?", 
-        image: "images/signs/50.png",
+        id: 48,
+        question: "What does this sign warn of?",
+        image: "images/signs/48.png",
         options: [
-            "Winding road ahead", 
+            "Winding road ahead",
             "Keep to left", 
-            "Danger, road ends", 
+            "Danger, road ends",
             "Danger, sharp turn"
         ],
-        correctAnswer: 3, 
+        correctAnswer: 3,
         category: "warning",
         explanation: "This sign warns of a sharp turn ahead. Reduce speed significantly."
     },
+    // Questions 49-64
     {
-        id: 51, 
-        question: "This sign warns of:", 
-        image: "images/signs/51.png",
+        id: 49,
+        question: "This sign warns of:",
+        image: "images/signs/49.png",
         options: [
-            "You are approaching a four-way intersection", 
+            "You are approaching a four-way intersection",
             "You are approaching a railroad crossing", 
-            "You are approaching a hospital zone", 
+            "You are approaching a hospital zone",
             "You are approaching a pedestrian crosswalk"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "warning",
         explanation: "This sign warns of a railroad crossing ahead. Be prepared to stop."
     },
     {
-        id: 52, 
-        question: "What does this sign mean?", 
-        image: "images/signs/52.png",
+        id: 50,
+        question: "What does this sign mean?",
+        image: "images/signs/50.png",
         options: [
-            "Maximum speed of 50 km (30 miles) per hour from this sign to the next sign", 
+            "Maximum speed of 50 km (30 miles) per hour from this sign to the next sign",
             "Speed limit for rural school zones", 
-            "End of 50 km (30 miles) per hour zone", 
+            "End of 50 km (30 miles) per hour zone",
             "Maximum speed of 50 km (30 miles) per hour ahead"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "regulatory",
         explanation: "This sign indicates the maximum speed limit of 50 km/h from this point to the next speed limit sign."
     },
     {
-        id: 53, 
-        question: "This sign means:", 
-        image: "images/signs/53.png",
+        id: 51,
+        question: "This sign means:",
+        image: "images/signs/51.png",
         options: [
-            "I am turning left", 
+            "I am turning left",
             "I am slowing or stopping", 
-            "I am turning right", 
+            "I am turning right",
             "You may pass me"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "safety",
         explanation: "This hand signal (arm out and down) indicates slowing down or stopping."
     },
     {
-        id: 54, 
-        question: "What does this sign warn of?", 
-        image: "images/signs/54.png",
+        id: 52,
+        question: "What does this sign warn of?",
+        image: "images/signs/52.png",
         options: [
-            "Factory ahead, slow down", 
+            "Factory ahead, slow down",
             "Bumpy or uneven pavement ahead", 
-            "Construction zone", 
+            "Construction zone",
             "Bridge or viaduct"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "warning",
         explanation: "This sign warns of bumpy or uneven pavement ahead. Reduce speed."
     },
     {
-        id: 55, 
-        question: "This sign means:", 
-        image: "images/signs/55.png",
+        id: 53,
+        question: "This sign means:",
+        image: "images/signs/53.png",
         options: [
-            "I am turning right", 
+            "I am turning right",
             "I am turning left", 
-            "I am slowing or stopping", 
+            "I am slowing or stopping",
             "You may pass me"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "safety",
         explanation: "This hand signal (arm straight out) indicates a right turn."
     },
     {
-        id: 56, 
-        question: "What does this sign indicate?", 
-        image: "images/signs/56.png",
+        id: 54,
+        question: "What does this sign indicate?",
+        image: "images/signs/54.png",
         options: [
-            "You may exit if you remain in right hand lane", 
+            "You may exit if you remain in right hand lane",
             "You must not drive in right hand lane under any circumstances", 
-            "End of highway, you must move into right hand lane", 
+            "End of highway, you must move into right hand lane",
             "You must exit if you remain in right hand lane"
         ],
-        correctAnswer: 2, 
+        correctAnswer: 2,
         category: "regulatory",
         explanation: "This sign indicates the end of a highway. You must move into the right-hand lane."
     },
     {
-        id: 57, 
-        question: "This sign warns of:", 
-        image: "images/signs/57.png",
+        id: 55,
+        question: "This sign warns of:",
+        image: "images/signs/55.png",
         options: [
-            "Drive with caution", 
+            "Drive with caution",
             "Share the road with oncoming traffic", 
-            "Slippery when wet", 
+            "Slippery when wet",
             "No standing"
         ],
-        correctAnswer: 2, 
+        correctAnswer: 2,
         category: "warning",
         explanation: "This sign warns that the road surface becomes slippery when wet."
     },
     {
-        id: 58, 
-        question: "What does this sign indicate?", 
-        image: "images/signs/58.png",
+        id: 56,
+        question: "What does this sign indicate?",
+        image: "images/signs/56.png",
         options: [
-            "No trucks allowed", 
+            "No trucks allowed",
             "Warns of a steep hill ahead", 
-            "Passing is not allowed", 
+            "Passing is not allowed",
             "Watch for falling rocks"
         ],
-        correctAnswer: 3, 
+        correctAnswer: 3,
         category: "warning",
         explanation: "This sign warns of potential falling rocks in the area. Be alert."
     },
     {
-        id: 59, 
-        question: "This sign means:", 
-        image: "images/signs/59.png",
+        id: 57,
+        question: "This sign means:",
+        image: "images/signs/57.png",
         options: [
-            "Fire hall", 
+            "Fire hall",
             "Do not enter", 
-            "There may be water flowing over the road", 
+            "There may be water flowing over the road",
             "Constructions zone"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "warning",
         explanation: "This sign indicates there is a fire hall ahead. Watch for fire trucks entering/exiting."
     },
     {
-        id: 60, 
-        question: "What does this sign warn of?", 
-        image: "images/signs/60.png",
+        id: 58,
+        question: "What does this sign warn of?",
+        image: "images/signs/58.png",
         options: [
-            "A hidden school bus stop ahead, slow down, drive that extra caution, watch for children and school buses with flashing red lights", 
+            "A hidden school bus stop ahead, slow down, drive that extra caution, watch for children and school buses with flashing red lights",
             "Hidden intersection", 
-            "School zone", 
+            "School zone",
             "School with play ground"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "warning",
         explanation: "This sign warns of a hidden school bus stop ahead. Be extra cautious for children and buses."
     },
     {
-        id: 61, 
-        question: "This sign indicates:", 
-        image: "images/signs/61.png",
+        id: 59,
+        question: "This sign indicates:",
+        image: "images/signs/59.png",
         options: [
-            "Bumpy road ahead", 
+            "Bumpy road ahead",
             "Sign shows the maximum truck clearance height", 
-            "School zone ahead", 
+            "School zone ahead",
             "Watch for falling rocks"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "warning",
         explanation: "This sign shows the maximum height clearance for trucks and tall vehicles."
     },
     {
-        id: 62, 
-        question: "What does this sign mean?", 
-        image: "images/signs/62.png",
+        id: 60,
+        question: "What does this sign mean?",
+        image: "images/signs/60.png",
         options: [
-            "Snowmobile repair shop ahead", 
+            "Snowmobile repair shop ahead",
             "Snowmobile parking", 
-            "Snowmobiles cross this road", 
+            "Snowmobiles cross this road",
             "Snowmobiles not allowed"
         ],
-        correctAnswer: 2, 
+        correctAnswer: 2,
         category: "warning",
         explanation: "This sign warns that snowmobiles may cross this roadway. Be alert for snowmobiles."
     },
     {
-        id: 63, 
-        question: "This sign indicates:", 
-        image: "images/signs/63.png",
+        id: 61,
+        question: "This sign indicates:",
+        image: "images/signs/61.png",
         options: [
-            "Do not pass any vehicles within 30 metres of a pedestrian crossing", 
+            "Do not pass any vehicles within 30 metres of a pedestrian crossing",
             "School zone", 
-            "Uneven pavement ahead", 
+            "Uneven pavement ahead",
             "Construction zone"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "regulatory",
         explanation: "This sign prohibits passing other vehicles within 30 meters of a pedestrian crossing."
     },
     {
-        id: 64, 
-        question: "What does this sign mean?", 
-        image: "images/signs/64.png",
+        id: 62,
+        question: "What does this sign mean?",
+        image: "images/signs/62.png",
         options: [
-            "Watch for disabled persons", 
+            "Watch for disabled persons",
             "Passing is not allowed", 
-            "Wheel chair crossing", 
+            "Wheel chair crossing",
             "A school crossing ahead, follow the directions of the crossing guard or school safety patroller"
         ],
-        correctAnswer: 3, 
+        correctAnswer: 3,
         category: "warning",
         explanation: "This sign indicates a school crossing with a crossing guard. Follow their directions."
     },
-    // Questions 65-77
     {
-        id: 65, 
-        question: "This sign means:", 
-        image: "images/signs/65.png",
+        id: 63,
+        question: "This sign means:",
+        image: "images/signs/63.png",
         options: [
-            "When a school bus arm swings out with red lights flashing, you must stop and you are prohibited from passing", 
+            "When a school bus arm swings out with red lights flashing, you must stop and you are prohibited from passing",
             "Construction sign", 
-            "School zone", 
+            "School zone",
             "Stop sign ahead"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "warning",
         explanation: "This sign explains the law regarding school bus stop arms. You must stop when lights are flashing."
     },
     {
-        id: 66, 
-        question: "What does this sign indicate?", 
-        image: "images/signs/66.png",
+        id: 64,
+        question: "What does this sign indicate?",
+        image: "images/signs/64.png",
         options: [
-            "It is a warning sign", 
+            "It is a warning sign",
             "During school hours when the yellow lights are flashing, follow the speed limit shown", 
-            "Watch for cross guard only", 
+            "Watch for cross guard only",
             "Watch for children only"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "regulatory",
         explanation: "This sign shows the speed limit during school hours when lights are flashing."
     },
+    // Questions 65-77
     {
-        id: 67, 
-        question: "This sign indicates:", 
-        image: "images/signs/67.png",
+        id: 65,
+        question: "This sign indicates:",
+        image: "images/signs/65.png",
         options: [
-            "Highway with two express lanes", 
+            "Highway with two express lanes",
             "The two lanes ahead are closed", 
-            "Two or more passengers must be in the vehicle to use this lane on the highway", 
+            "Two or more passengers must be in the vehicle to use this lane on the highway",
             "Two lanes will merge into one"
         ],
-        correctAnswer: 2, 
+        correctAnswer: 2,
         category: "guide",
         explanation: "This is an HOV lane sign indicating the lane is for vehicles with 2+ passengers."
     },
     {
-        id: 68, 
-        question: "What does this sign indicate?", 
-        image: "images/signs/68.png",
+        id: 66,
+        question: "What does this sign indicate?",
+        image: "images/signs/66.png",
         options: [
-            "Hazard, the downward line indicates the side on which you may safely pass", 
+            "Hazard, the downward line indicates the side on which you may safely pass",
             "Hazard, the downward line indicates the side on which you may not safely pass", 
-            "Shopping ahead", 
+            "Shopping ahead",
             "Rest area ahead"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "warning",
         explanation: "This sign indicates a hazard ahead and shows which side passing is prohibited."
     },
     {
-        id: 69, 
-        question: "This sign indicates:", 
-        image: "images/signs/69.png",
+        id: 67,
+        question: "This sign indicates:",
+        image: "images/signs/67.png",
         options: [
-            "Winding road ahead", 
+            "Winding road ahead",
             "By wheel-chair only or disabled person parking (handicap)", 
-            "No parking", 
+            "No parking",
             "No standing"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "regulatory",
         explanation: "This sign indicates parking reserved for vehicles with disabled person permits."
     },
     {
-        id: 70, 
-        question: "What does this sign mean?", 
-        image: "images/signs/70.png",
+        id: 68,
+        question: "What does this sign mean?",
+        image: "images/signs/68.png",
         options: [
-            "Two separate roads by median ahead, keep to the right", 
+            "Two separate roads by median ahead, keep to the right",
             "Divided highway ends", 
-            "Narrow bridge ahead", 
+            "Narrow bridge ahead",
             "Road under construction"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "warning",
         explanation: "This sign indicates two separate roads divided by a median ahead."
     },
     {
-        id: 71, 
-        question: "This sign indicates:", 
-        image: "images/signs/71.png",
+        id: 69,
+        question: "This sign indicates:",
+        image: "images/signs/69.png",
         options: [
-            "Lane usage sign permitting all turns including left", 
+            "Lane usage sign permitting all turns including left",
             "No parking from arrows to corner", 
-            "Advance warning of danger", 
+            "Advance warning of danger",
             "Lane usage sign meaning right turn only"
         ],
-        correctAnswer: 3, 
+        correctAnswer: 3,
         category: "guide",
         explanation: "This sign indicates the lane is for right turns only."
     },
     {
-        id: 72, 
-        question: "This sign means:", 
-        image: "images/signs/72.png",
+        id: 70,
+        question: "This sign means:",
+        image: "images/signs/70.png",
         options: [
-            "I am turning right", 
+            "I am turning right",
             "I am turning left", 
-            "I am slowing or stopping", 
+            "I am slowing or stopping",
             "I am stopping"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "safety",
         explanation: "This hand signal (arm out and up) indicates a right turn."
     },
     {
-        id: 73, 
-        question: "What does this sign mean?", 
-        image: "images/signs/73.png",
+        id: 71,
+        question: "What does this sign mean?",
+        image: "images/signs/71.png",
         options: [
-            "Keep distance away", 
+            "Keep distance away",
             "New born baby on board", 
-            "New driver", 
+            "New driver",
             "New car"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "information",
         explanation: "This sign indicates there is a newborn baby in the vehicle. Drive with extra caution."
     },
     {
-        id: 74, 
-        question: "What does this sign mean?", 
-        image: "images/signs/74.png",
+        id: 72,
+        question: "What does this sign mean?",
+        image: "images/signs/72.png",
         options: [
-            "Housing", 
+            "Housing",
             "Hospital", 
-            "Horse racing", 
+            "Horse racing",
             "Hills"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "information",
         explanation: "This sign indicates the direction to a hospital."
     },
     {
-        id: 75, 
-        question: "What does this sign mean?", 
-        image: "images/signs/75.png",
+        id: 73,
+        question: "What does this sign mean?",
+        image: "images/signs/73.png",
         options: [
-            "Air show ahead", 
+            "Air show ahead",
             "Air plane landing", 
-            "Route to Airport", 
+            "Route to Airport",
             "None of the above"
         ],
-        correctAnswer: 2, 
+        correctAnswer: 2,
         category: "information",
         explanation: "This sign indicates the route to the airport."
     },
     {
-        id: 76, 
-        question: "What does this sign mean?", 
-        image: "images/signs/76.png",
+        id: 74,
+        question: "What does this sign mean?",
+        image: "images/signs/74.png",
         options: [
-            "No smoking", 
+            "No smoking",
             "Not more than 3 minutes idling", 
-            "Idling is permitted", 
+            "Idling is permitted",
             "No stopping more than 3 minutes"
         ],
-        correctAnswer: 1, 
+        correctAnswer: 1,
         category: "regulatory",
         explanation: "This sign indicates a limit on engine idling time to reduce emissions."
     },
     {
-        id: 77, 
-        question: "What does this sign mean?", 
-        image: "images/signs/77.png",
+        id: 75,
+        question: "What does this sign mean?",
+        image: "images/signs/75.png",
         options: [
-            "The bridge ahead lifts or swings to allow boats to pass", 
+            "The bridge ahead lifts or swings to allow boats to pass",
             "Airport", 
-            "Hotel", 
+            "Hotel",
             "Narrow road ahead"
         ],
-        correctAnswer: 0, 
+        correctAnswer: 0,
         category: "warning",
         explanation: "This sign warns that the bridge ahead is a movable bridge that may open for boat traffic."
+    },
+    {
+        id: 76,
+        question: "This sign indicates:",
+        image: "images/signs/76.png",
+        options: [
+            "Keep to the right lane except when passing",
+            "Keep right if you want to park", 
+            "No U-turns",
+            "For right turns"
+        ],
+        correctAnswer: 0,
+        category: "regulatory",
+        explanation: "This sign means you should keep to the right lane except when passing another vehicle."
+    },
+    {
+        id: 77,
+        question: "What does this sign indicate?",
+        image: "images/signs/77.png",
+        options: [
+            "Parking is permitted",
+            "You may not park between the signs during posted times", 
+            "No parking",
+            "Weekend parking only"
+        ],
+        correctAnswer: 1,
+        category: "regulatory",
+        explanation: "This sign indicates parking restrictions during specific times. Read the times posted to know when parking is prohibited."
     }
 ];
-
-
 // ============================================
 // PART B: RULES OF THE ROAD (104 Questions)
 // ============================================
 
 const rulesOfTheRoadQuestions = [
-    
     {
         id: 101,
         question: "In Ontario, there is a seat belt law. This means:",
