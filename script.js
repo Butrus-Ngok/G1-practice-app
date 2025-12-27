@@ -37,7 +37,6 @@ const passFail = document.getElementById('passFail');
 const resultMessage = document.getElementById('resultMessage');
 const statCorrect = document.getElementById('statCorrect');
 const statIncorrect = document.getElementById('statIncorrect');
-const statScore = document.getElementById('statScore');
 const statTime = document.getElementById('statTime');
 const testTypeResult = document.getElementById('testTypeResult');
 const yourScoreResult = document.getElementById('yourScoreResult');
@@ -45,6 +44,7 @@ const questionsAttemptedEl = document.getElementById('questionsAttempted');
 const completionDate = document.getElementById('completionDate');
 const reviewContainer = document.getElementById('reviewContainer');
 const scoreCircle = document.getElementById('scoreCircle');
+const testTypeDisplay = document.getElementById('testTypeDisplay');
 
 // ============================================
 // UTILITY FUNCTIONS
@@ -66,21 +66,33 @@ function formatTime(seconds) {
     return `${minutes}:${secs.toString().padStart(2, '0')}`;
 }
 
+// Show screen helper
+function showScreen(screen) {
+    // Hide all screens
+    document.querySelectorAll('.screen').forEach(s => {
+        s.classList.remove('active');
+    });
+    
+    // Show selected screen
+    document.getElementById(screen).classList.add('active');
+}
+
 // ============================================
 // TEST TYPE SELECTION
 // ============================================
 
 function selectTestType(type) {
     // Remove selected class from all options
-    document.querySelectorAll('.test-option').forEach(option => {
+    document.querySelectorAll('.test-card').forEach(option => {
         option.classList.remove('selected');
     });
     
     // Add selected class to clicked option
-    document.querySelector(`.test-option[data-test-type="${type}"]`).classList.add('selected');
+    document.querySelector(`.test-card[data-test-type="${type}"]`).classList.add('selected');
     
     // Enable start button
     startBtn.disabled = false;
+    startBtn.innerHTML = `<i class="fas fa-play-circle"></i> Start ${type === 'signs' ? 'Road Signs' : type === 'rules' ? 'Rules' : 'Full'} Test`;
     currentTestType = type;
 }
 
@@ -93,6 +105,7 @@ function startTest() {
     
     let selectedQuestions = [];
     let questionCount = 0;
+    let testTypeText = "";
     
     // Select questions based on test type
     switch(currentTestType) {
@@ -102,6 +115,7 @@ function startTest() {
             shuffleArray(shuffledSigns);
             selectedQuestions = shuffledSigns.slice(0, 20);
             questionCount = 20;
+            testTypeText = "Road Signs";
             break;
             
         case 'rules':
@@ -110,6 +124,7 @@ function startTest() {
             shuffleArray(shuffledRules);
             selectedQuestions = shuffledRules.slice(0, 20);
             questionCount = 20;
+            testTypeText = "Rules of Road";
             break;
             
         case 'full':
@@ -125,6 +140,7 @@ function startTest() {
             ];
             shuffleArray(selectedQuestions); // Mix them up
             questionCount = 40;
+            testTypeText = "Full Test";
             break;
     }
     
@@ -138,15 +154,16 @@ function startTest() {
     startTime = new Date();
     elapsedTime = 0;
     
+    // Update test type display
+    testTypeDisplay.textContent = testTypeText;
+    
     // Start timer
     if (timerInterval) clearInterval(timerInterval);
     timerInterval = setInterval(updateTimer, 1000);
     updateTimerDisplay();
     
-    // Show quiz, hide start screen
-    startScreen.style.display = 'none';
-    quizContainer.style.display = 'block';
-    resultsContainer.style.display = 'none';
+    // Show quiz screen
+    showScreen('quizContainer');
     
     // Load first question
     loadQuestion();
@@ -195,7 +212,7 @@ function loadQuestion() {
         questionHTML += `
             <div class="question-image-container">
                 <img src="${question.image}" alt="Question visual aid" class="question-image" 
-                     onerror="this.onerror=null; this.src='images/placeholder.png';">
+                     onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 300\"><rect width=\"400\" height=\"300\" fill=\"%23f1f5f9\"/><text x=\"200\" y=\"150\" font-family=\"Arial\" font-size=\"24\" text-anchor=\"middle\" fill=\"%2394a3b8\">Image ${question.id}</text></svg>';">
             </div>
         `;
     }
@@ -238,13 +255,13 @@ function loadQuestion() {
     questionContainer.innerHTML = questionHTML + optionsHTML;
     
     // Update navigation buttons
-    prevBtn.style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
+    prevBtn.style.display = currentQuestionIndex > 0 ? 'inline-flex' : 'none';
     
     if (currentQuestionIndex === currentQuestions.length - 1) {
         nextBtn.style.display = 'none';
-        submitBtn.style.display = 'inline-block';
+        submitBtn.style.display = 'inline-flex';
     } else {
-        nextBtn.style.display = 'inline-block';
+        nextBtn.style.display = 'inline-flex';
         submitBtn.style.display = 'none';
     }
 }
@@ -277,6 +294,15 @@ function selectAnswer(answerIndex) {
     
     // Reload question to show correct/incorrect highlights
     loadQuestion();
+    
+    // Auto-proceed to next question after 1 second
+    if (currentQuestionIndex < currentQuestions.length - 1) {
+        setTimeout(() => {
+            if (userAnswers[currentQuestionIndex] !== null) {
+                nextQuestion();
+            }
+        }, 1000);
+    }
 }
 
 // ============================================
@@ -317,17 +343,16 @@ function finishTest() {
     scorePercent.textContent = `${percentage}%`;
     statCorrect.textContent = score;
     statIncorrect.textContent = totalQuestions - score;
-    statScore.textContent = `${percentage}%`;
     statTime.textContent = formatTime(elapsedTime);
     
     // Set pass/fail message
     if (passed) {
         passFail.textContent = "PASS";
-        passFail.className = "pass-fail pass";
+        passFail.className = "pass";
         resultMessage.textContent = "Congratulations! You passed the practice test.";
     } else {
         passFail.textContent = "FAIL";
-        passFail.className = "pass-fail fail";
+        passFail.className = "fail";
         resultMessage.textContent = "Keep practicing! You need 80% to pass the actual G1 test.";
     }
     
@@ -355,18 +380,19 @@ function finishTest() {
         });
     }
     
-    // Update score circle
-    scoreCircle.style.background = `conic-gradient(var(--primary-blue) 0% ${percentage}%, var(--medium-gray) ${percentage}% 100%)`;
+    // Update score circle with animation
+    setTimeout(() => {
+        scoreCircle.style.background = `conic-gradient(var(--primary) 0% ${percentage}%, var(--gray-200) ${percentage}% 100%)`;
+    }, 100);
     
     // Generate review
     generateReview();
     
-    // Show results, hide quiz
-    quizContainer.style.display = 'none';
-    resultsContainer.style.display = 'block';
+    // Show results screen
+    showScreen('resultsContainer');
     
     // Scroll to top
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ============================================
@@ -374,7 +400,7 @@ function finishTest() {
 // ============================================
 
 function generateReview() {
-    let reviewHTML = '<h3 class="review-title"><i class="fas fa-clipboard-check"></i> Question Review</h3>';
+    let reviewHTML = '';
     
     currentQuestions.forEach((question, index) => {
         const userAnswer = userAnswers[index];
@@ -412,7 +438,7 @@ function generateReview() {
         if (question.image) {
             reviewHTML += `
                 <img src="${question.image}" alt="Question visual aid" class="review-image" 
-                     onerror="this.onerror=null; this.src='images/placeholder.png';">
+                     onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 300\"><rect width=\"400\" height=\"300\" fill=\"%23f1f5f9\"/><text x=\"200\" y=\"150\" font-family=\"Arial\" font-size=\"24\" text-anchor=\"middle\" fill=\"%2394a3b8\">Image ${question.id}</text></svg>';">
             `;
         }
         
@@ -465,25 +491,24 @@ function restartTest() {
         q.userCorrect = false;
     });
     
-    // Show start screen
-    resultsContainer.style.display = 'none';
-    startScreen.style.display = 'block';
-    
     // Reset test type selection
-    document.querySelectorAll('.test-option').forEach(option => {
+    document.querySelectorAll('.test-card').forEach(option => {
         option.classList.remove('selected');
     });
     startBtn.disabled = true;
+    startBtn.innerHTML = `<i class="fas fa-play-circle"></i> Start Test <span class="btn-subtext">Select a test type to begin</span>`;
     currentTestType = null;
     
+    // Show start screen
+    showScreen('startScreen');
+    
     // Scroll to top
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function goToStart() {
-    resultsContainer.style.display = 'none';
-    startScreen.style.display = 'block';
-    window.scrollTo(0, 0);
+    showScreen('startScreen');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ============================================
@@ -491,8 +516,29 @@ function goToStart() {
 // ============================================
 
 document.addEventListener('keydown', function(e) {
+    // Handle start screen shortcuts
+    if (startScreen.classList.contains('active')) {
+        switch(e.key) {
+            case '1':
+                selectTestType('signs');
+                break;
+            case '2':
+                selectTestType('rules');
+                break;
+            case '3':
+                selectTestType('full');
+                break;
+            case 'Enter':
+                if (!startBtn.disabled) {
+                    startTest();
+                }
+                break;
+        }
+        return;
+    }
+    
     // Only handle if quiz is active
-    if (quizContainer.style.display !== 'block') return;
+    if (!quizContainer.classList.contains('active')) return;
     
     switch(e.key) {
         case 'ArrowLeft':
@@ -532,7 +578,7 @@ document.addEventListener('keydown', function(e) {
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     // Set up event listeners for test options
-    document.querySelectorAll('.test-option').forEach(option => {
+    document.querySelectorAll('.test-card').forEach(option => {
         option.addEventListener('click', function() {
             selectTestType(this.dataset.testType);
         });
@@ -540,17 +586,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize start button
     startBtn.disabled = true;
-    
-    // Add CSS for option text
-    const style = document.createElement('style');
-    style.textContent = `
-        .option-text { flex: 1; }
-        .question-image-container { margin-bottom: 20px; }
-        .review-item.unanswered { border-left-color: var(--warning-yellow); }
-        .review-answer.unanswered { background-color: #fef3c7; border-left-color: var(--warning-yellow); }
-        .review-question.unanswered i { color: var(--warning-yellow); }
-    `;
-    document.head.appendChild(style);
     
     console.log("G1 Practice Test initialized successfully!");
     console.log(`Total questions loaded: ${roadSignsQuestions.length} Road Signs + ${rulesOfTheRoadQuestions.length} Rules = ${roadSignsQuestions.length + rulesOfTheRoadQuestions.length} questions`);
