@@ -5,222 +5,341 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ontario G1 Practice Test - Complete Study Guide</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
 </head>
 <body>
     <div class="app-container">
-        <header>
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-car"></i>
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Ontario G1 Practice Test</h1>
+                        <p class="subtitle">Complete Study Guide Based on Official Driver's Handbook</p>
+                    </div>
                 </div>
-                <div class="logo-text">Ontario G1 Practice Test</div>
+                <div class="header-stats">
+                    <div class="stat-badge">
+                        <span class="stat-number">77</span>
+                        <span class="stat-label">Road Signs</span>
+                    </div>
+                    <div class="stat-badge">
+                        <span class="stat-number">104</span>
+                        <span class="stat-label">Rules of Road</span>
+                    </div>
+                    <div class="stat-badge">
+                        <span class="stat-number">181</span>
+                        <span class="stat-label">Total Questions</span>
+                    </div>
+                </div>
             </div>
-            <p class="subtitle">Complete study guide with 77 Road Signs and 104 Rules of the Road questions from the official handbook</p>
         </header>
 
-        <!-- Start Screen -->
-        <div id="startScreen" class="card start-screen">
-            <h1 class="card-title"><i class="fas fa-flag-checkered"></i> Choose Your Practice Test</h1>
-            <p>Select the type of test you'd like to practice. Each test randomly selects questions from the complete database.</p>
-            
-            <div class="test-options">
-                <div class="test-option" data-test-type="signs" onclick="selectTestType('signs')">
-                    <div class="option-icon">
-                        <i class="fas fa-traffic-light"></i>
-                    </div>
-                    <h3 class="option-title">Road Signs Only</h3>
-                    <p class="option-desc">Practice identifying Ontario road signs. 20 random questions selected from 77 total signs.</p>
-                    <div class="option-meta">
-                        <div class="meta-item">
-                            <i class="fas fa-question-circle"></i>
-                            <span>20 of 77 Questions</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>15-20 min</span>
-                        </div>
-                    </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Start Screen -->
+            <div id="startScreen" class="screen start-screen active">
+                <div class="screen-header">
+                    <h2><i class="fas fa-flag-checkered"></i> Choose Your Practice Test</h2>
+                    <p class="screen-description">Select the type of test you'd like to practice. Questions are randomly selected from the complete database.</p>
                 </div>
-                
-                <div class="test-option" data-test-type="rules" onclick="selectTestType('rules')">
-                    <div class="option-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3 class="option-title">Rules of the Road</h3>
-                    <p class="option-desc">Test your knowledge of Ontario driving laws and regulations. 20 questions from 104 total.</p>
-                    <div class="option-meta">
-                        <div class="meta-item">
-                            <i class="fas fa-question-circle"></i>
-                            <span>20 of 104 Questions</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>15-20 min</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="test-option" data-test-type="full" onclick="selectTestType('full')">
-                    <div class="option-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="option-title">Full Practice Test</h3>
-                    <p class="option-desc">Complete 40-question test simulating the actual G1 exam with both road signs and rules questions.</p>
-                    <div class="option-meta">
-                        <div class="meta-item">
-                            <i class="fas fa-question-circle"></i>
-                            <span>40 Questions</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>30-40 min</span>
-                        </div>
-                    </div>
-                    <div class="hint">Most Realistic</div>
-                </div>
-            </div>
-            
-            <button id="startBtn" class="btn btn-lg" onclick="startTest()" disabled>
-                <i class="fas fa-play-circle"></i> Start Test
-            </button>
-            
-            <div class="quick-stats">
-                <div class="stat-box">
-                    <div class="stat-number">77</div>
-                    <div class="stat-label">Road Signs</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">104</div>
-                    <div class="stat-label">Rules Questions</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">181</div>
-                    <div class="stat-label">Total Questions</div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Quiz Container -->
-        <div id="quizContainer" class="card quiz-container">
-            <div class="quiz-header">
-                <div class="progress-info">
-                    <div class="progress-label">Question</div>
-                    <div class="progress-value" id="currentQuestion">1 / 20</div>
-                </div>
-                <div class="progress-info">
-                    <div class="progress-label">Score</div>
-                    <div class="progress-value" id="currentScore">0</div>
-                </div>
-                <div class="progress-info">
-                    <div class="progress-label">Time</div>
-                    <div class="progress-value" id="currentTime">0:00</div>
-                </div>
-            </div>
-            
-            <div class="progress-bar-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            
-            <div id="questionContainer" class="question-container">
-                <!-- Question content will be inserted here -->
-            </div>
-            
-            <div class="navigation-buttons">
-                <button id="prevBtn" class="btn btn-secondary" onclick="prevQuestion()">
-                    <i class="fas fa-arrow-left"></i> Previous
-                </button>
-                <button id="nextBtn" class="btn" onclick="nextQuestion()">
-                    Next <i class="fas fa-arrow-right"></i>
-                </button>
-                <button id="submitBtn" class="btn" onclick="finishTest()" style="display: none;">
-                    <i class="fas fa-flag-checkered"></i> Finish Test
-                </button>
-            </div>
-        </div>
+                <div class="test-options">
+                    <!-- Road Signs Test -->
+                    <div class="test-card" data-test-type="signs" onclick="selectTestType('signs')">
+                        <div class="test-icon">
+                            <i class="fas fa-traffic-light"></i>
+                        </div>
+                        <h3 class="test-title">Road Signs Only</h3>
+                        <p class="test-description">Practice identifying Ontario road signs. 20 random questions from 77 total signs.</p>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>20 Questions</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10-15 min</span>
+                            </div>
+                        </div>
+                        <div class="test-tag">Recommended</div>
+                    </div>
 
-        <!-- Results Container -->
-        <div id="resultsContainer" class="card results-container">
-            <div class="results-header">
-                <h1 class="card-title"><i class="fas fa-chart-line"></i> Your Test Results</h1>
-                
-                <div class="score-circle">
-                    <div class="score-circle-bg" id="scoreCircle">
-                        <div class="score-circle-inner">
-                            <div class="score-percent" id="scorePercent">0%</div>
-                            <div class="score-text">Score</div>
+                    <!-- Rules of the Road Test -->
+                    <div class="test-card" data-test-type="rules" onclick="selectTestType('rules')">
+                        <div class="test-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="test-title">Rules of the Road</h3>
+                        <p class="test-description">Test your knowledge of Ontario driving laws and regulations. 20 questions from 104 total.</p>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>20 Questions</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10-15 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Full Practice Test -->
+                    <div class="test-card featured" data-test-type="full" onclick="selectTestType('full')">
+                        <div class="test-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="test-title">Full Practice Test</h3>
+                        <p class="test-description">Complete 40-question test simulating the actual G1 exam with both road signs and rules questions.</p>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>40 Questions</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>20-30 min</span>
+                            </div>
+                        </div>
+                        <div class="test-tag">Most Realistic</div>
+                    </div>
+                </div>
+
+                <div class="start-button-container">
+                    <button id="startBtn" class="btn-primary btn-lg" onclick="startTest()" disabled>
+                        <i class="fas fa-play-circle"></i> Start Test
+                        <span class="btn-subtext">Select a test type to begin</span>
+                    </button>
+                    <div class="keyboard-hint">
+                        <i class="fas fa-keyboard"></i> Press 1, 2, 3 for quick selection
+                    </div>
+                </div>
+
+                <div class="quick-tips">
+                    <div class="tip">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Passing Score:</strong> 80% (16/20 for signs/rules, 32/40 for full test)</span>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-redo"></i>
+                        <span><strong>Unlimited Attempts:</strong> Questions are randomized each time</span>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-chart-bar"></i>
+                        <span><strong>Detailed Review:</strong> See explanations for every question</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div id="quizContainer" class="screen quiz-screen">
+                <div class="quiz-header">
+                    <div class="quiz-progress">
+                        <div class="progress-info">
+                            <span class="progress-label">Question</span>
+                            <span class="progress-value" id="currentQuestion">1 / 20</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-stats">
+                        <div class="stat">
+                            <span class="stat-label">Score</span>
+                            <span class="stat-value" id="currentScore">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Time</span>
+                            <span class="stat-value" id="currentTime">0:00</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Type</span>
+                            <span class="stat-value" id="testTypeDisplay">Signs</span>
                         </div>
                     </div>
                 </div>
-                
-                <h2 id="passFail" class="pass-fail pass">PASS</h2>
-                <p id="resultMessage">Congratulations! You passed the practice test.</p>
-            </div>
-            
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-value" id="statCorrect">0</div>
-                    <div class="stat-label">Correct</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="statIncorrect">0</div>
-                    <div class="stat-label">Incorrect</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="statScore">0%</div>
-                    <div class="stat-label">Score</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="statTime">0:00</div>
-                    <div class="stat-label">Time</div>
-                </div>
-            </div>
-            
-            <div class="results-details">
-                <div class="detail-row">
-                    <span>Test Type:</span>
-                    <strong id="testTypeResult">Road Signs Only</strong>
-                </div>
-                <div class="detail-row">
-                    <span>Passing Score:</span>
-                    <strong>80% (16/20 correct)</strong>
-                </div>
-                <div class="detail-row">
-                    <span>Your Score:</span>
-                    <strong id="yourScoreResult">0/0 (0%)</strong>
-                </div>
-                <div class="detail-row">
-                    <span>Questions Attempted:</span>
-                    <strong id="questionsAttempted">0</strong>
+
+                <div class="quiz-content">
+                    <div id="questionContainer" class="question-container">
+                        <!-- Question will be loaded here -->
+                    </div>
+
+                    <div class="quiz-navigation">
+                        <button id="prevBtn" class="btn-secondary" onclick="prevQuestion()">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button id="nextBtn" class="btn-primary" onclick="nextQuestion()">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button id="submitBtn" class="btn-success" onclick="finishTest()" style="display: none;">
+                            <i class="fas fa-flag-checkered"></i> Finish Test
+                        </button>
+                    </div>
+
+                    <div class="keyboard-help">
+                        <div class="keyboard-item">
+                            <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd>
+                            <span>Select answer</span>
+                        </div>
+                        <div class="keyboard-item">
+                            <kbd>←</kbd><kbd>→</kbd>
+                            <span>Navigate</span>
+                        </div>
+                        <div class="keyboard-item">
+                            <kbd>Enter</kbd>
+                            <span>Next/Submit</span>
+                        </div>
+                        <div class="keyboard-item">
+                            <kbd>Esc</kbd>
+                            <span>Quit test</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div id="reviewContainer" class="review-questions">
-                <!-- Review questions will be inserted here -->
+
+            <!-- Results Screen -->
+            <div id="resultsContainer" class="screen results-screen">
+                <div class="results-header">
+                    <h2><i class="fas fa-chart-line"></i> Test Results</h2>
+                    <div class="results-summary">
+                        <div class="score-display">
+                            <div class="score-circle" id="scoreCircle">
+                                <div class="score-circle-inner">
+                                    <span class="score-percent" id="scorePercent">0%</span>
+                                    <span class="score-label">Score</span>
+                                </div>
+                            </div>
+                            <div class="score-status">
+                                <h3 id="passFail" class="pass">PASS</h3>
+                                <p id="resultMessage" class="result-message">Congratulations! You passed the practice test.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon correct">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="statCorrect">0</span>
+                            <span class="stat-label">Correct</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon incorrect">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="statIncorrect">0</span>
+                            <span class="stat-label">Incorrect</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon time">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="statTime">0:00</span>
+                            <span class="stat-label">Time</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon attempt">
+                            <i class="fas fa-list-ol"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="questionsAttempted">0</span>
+                            <span class="stat-label">Attempted</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-details">
+                    <h4><i class="fas fa-info-circle"></i> Test Details</h4>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Test Type:</span>
+                            <span class="detail-value" id="testTypeResult">Road Signs Only</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Passing Score:</span>
+                            <span class="detail-value">80%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Your Score:</span>
+                            <span class="detail-value" id="yourScoreResult">0/0 (0%)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Completion Date:</span>
+                            <span class="detail-value" id="completionDate">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <h4><i class="fas fa-clipboard-check"></i> Question Review</h4>
+                    <div id="reviewContainer" class="review-container">
+                        <!-- Review content will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn-primary btn-lg" onclick="restartTest()">
+                        <i class="fas fa-redo"></i> Try Again (New Questions)
+                    </button>
+                    <button class="btn-secondary" onclick="goToStart()">
+                        <i class="fas fa-home"></i> Back to Start
+                    </button>
+                </div>
             </div>
-            
-            <div style="margin-top: 40px;">
-                <button class="btn btn-lg" onclick="restartTest()">
-                    <i class="fas fa-redo"></i> Try Again (New Questions)
-                </button>
-                <button class="btn btn-secondary btn-lg" onclick="goToStart()" style="margin-left: 20px;">
-                    <i class="fas fa-home"></i> Back to Start
-                </button>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>© <span id="currentYear"></span> Ontario G1 Practice Test. Based on "Driver's Handbook Study Guide" PDF.</p>
+                    <p class="disclaimer">This is an unofficial study tool. Always refer to the official Ontario Driver's Handbook for the most up-to-date information.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="javascript:void(0)" onclick="showAbout()"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="javascript:void(0)" onclick="showKeyboardShortcuts()"><i class="fas fa-keyboard"></i> Shortcuts</a>
+                    <a href="javascript:void(0)" onclick="resetProgress()"><i class="fas fa-eraser"></i> Reset</a>
+                </div>
             </div>
-        </div>
-        
-        <div class="footer">
-            <p>© <span id="currentYear"></span> Ontario G1 Practice Test. Based on "Driver's Handbook Study Guide" PDF.</p>
-            <p>This is an unofficial study tool. Always refer to the official Ontario Driver's Handbook.</p>
-        </div>
+        </footer>
     </div>
 
+    <!-- Scripts -->
     <script src="quiz-data.js"></script>
     <script src="script.js"></script>
     <script>
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Utility functions
+        function showAbout() {
+            alert("Ontario G1 Practice Test\n\nA complete study guide based on the official Driver's Handbook.\nFeatures:\n• 77 Road Sign questions\n• 104 Rules of the Road questions\n• Three test modes\n• Instant feedback\n• Detailed explanations\n• No internet required");
+        }
+        
+        function showKeyboardShortcuts() {
+            alert("Keyboard Shortcuts:\n\nDuring Quiz:\n1, 2, 3, 4 - Select answer option\nArrow Left - Previous question\nArrow Right - Next question\nEnter - Submit/Next question\nEscape - Quit test\n\nStart Screen:\n1 - Select Road Signs test\n2 - Select Rules test\n3 - Select Full test\nEnter - Start selected test");
+        }
+        
+        function resetProgress() {
+            if (confirm("Reset all progress and start fresh?")) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
     </script>
 </body>
 </html>
