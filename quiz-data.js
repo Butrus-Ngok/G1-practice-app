@@ -351,7 +351,7 @@ const roadSignsQuestions = [
       "Bicycle route",
       "No parking"
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation: "This sign means bicycles are not permitted on this roadway.",
     category: "regulatory"
   },
