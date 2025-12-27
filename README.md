@@ -1,7 +1,8 @@
 ## Ontario G1 Practice Test
 A complete, interactive practice test for the Ontario G1 driver's license exam. Based on the official "Driver's Handbook Study Guide" with 181 total questions.
 
-https://github.com/Butrus-Ngok/G1-practice-app
+[https://github.com/Butrus-Ngok/G1-practice-app]
+(https://butrus-ngok.github.io/G1-practice-app/) 
 ## Features
 Complete Question Database: 77 Road Sign questions + 104 Rules of the Road questions
 
