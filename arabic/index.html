@@ -1,1 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار أونتاريو G1 التدريبي - دليل دراسة كامل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>اختبار أونتاريو G1 التدريبي</h1>
+                        <p class="subtitle">دليل دراسة كامل مبني على دليل السائق الرسمي</p>
+                    </div>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-badge">
+                        <span class="stat-number">77</span>
+                        <span class="stat-label">إشارة طريق</span>
+                    </div>
+                    <div class="stat-badge">
+                        <span class="stat-number">123</span>
+                        <span class="stat-label">قواعد الطريق</span>
+                    </div>
+                    <div class="stat-badge">
+                        <span class="stat-number">200</span>
+                        <span class="stat-label">سؤالاً</span>
+                    </div>
+                </div>
+            </div>
+        </header>
 
+        <main class="main-content">
+            <div id="startScreen" class="screen start-screen active">
+                <div class="screen-header">
+                    <h2><i class="fas fa-flag-checkered"></i> اختر نوع الاختبار التدريبي</h2>
+                    <p class="screen-description">اختر نوع التدريب الذي تريد البدء به. يتم اختيار الأسئلة عشوائياً من قاعدة الأسئلة الكاملة.</p>
+                </div>
+
+                <div class="test-options">
+                    <div class="test-card" data-test-type="signs" onclick="selectTestType('signs')">
+                        <div class="test-icon">
+                            <i class="fas fa-traffic-light"></i>
+                        </div>
+                        <h3 class="test-title">إشارات الطريق فقط</h3>
+                        <p class="test-description">تدرّب على التعرف إلى إشارات الطرق في أونتاريو. 20 سؤالاً عشوائياً من 77 إشارة.</p>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>20 سؤالاً</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10-15 دقيقة</span>
+                            </div>
+                        </div>
+                        <div class="test-tag">موصى به</div>
+                    </div>
+
+                    <div class="test-card" data-test-type="rules" onclick="selectTestType('rules')">
+                        <div class="test-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="test-title">قواعد الطريق</h3>
+                        <p class="test-description">اختبر معرفتك بقوانين وأنظمة القيادة في أونتاريو. 20 سؤالاً عشوائياً من قاعدة قواعد الطريق.</p>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>20 سؤالاً</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10-15 دقيقة</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="test-card featured" data-test-type="full" onclick="selectTestType('full')">
+                        <div class="test-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="test-title">اختبار تدريبي كامل</h3>
+                        <p class="test-description">اختبار من 40 سؤالاً يحاكي اختبار G1 الحقيقي ويجمع بين إشارات الطريق وقواعد القيادة.</p>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>40 سؤالاً</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>20-30 دقيقة</span>
+                            </div>
+                        </div>
+                        <div class="test-tag">الأقرب للاختبار الحقيقي</div>
+                    </div>
+                </div>
+
+                <div class="start-button-container">
+                    <button id="startBtn" class="btn-primary btn-lg" onclick="startTest()" disabled>
+                        <i class="fas fa-play-circle"></i> ابدأ الاختبار
+                        <span class="btn-subtext">اختر نوع الاختبار للبدء</span>
+                    </button>
+                    <div class="keyboard-hint">
+                        <i class="fas fa-keyboard"></i> اضغط 1 أو 2 أو 3 للاختيار السريع
+                    </div>
+                </div>
+
+                <div class="quick-tips">
+                    <div class="tip">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>درجة النجاح:</strong> 80% (16/20 للإشارات أو القواعد، و32/40 للاختبار الكامل)</span>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-redo"></i>
+                        <span><strong>محاولات غير محدودة:</strong> يتم ترتيب الأسئلة عشوائياً في كل محاولة</span>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-chart-bar"></i>
+                        <span><strong>مراجعة مفصلة:</strong> شاهد الشرح لكل سؤال بعد إنهاء الاختبار</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="quizContainer" class="screen quiz-screen">
+                <div class="quiz-header">
+                    <div class="quiz-progress">
+                        <div class="progress-info">
+                            <span class="progress-label">السؤال</span>
+                            <span class="progress-value" id="currentQuestion">1 / 20</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-stats">
+                        <div class="stat">
+                            <span class="stat-label">النتيجة</span>
+                            <span class="stat-value" id="currentScore">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">الوقت</span>
+                            <span class="stat-value" id="currentTime">0:00</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">النوع</span>
+                            <span class="stat-value" id="testTypeDisplay">الإشارات</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-content">
+                    <div id="questionContainer" class="question-container"></div>
+
+                    <div class="quiz-navigation">
+                        <button id="prevBtn" class="btn-secondary" onclick="prevQuestion()">
+                            <i class="fas fa-arrow-right"></i> السابق
+                        </button>
+                        <button id="nextBtn" class="btn-primary" onclick="nextQuestion()">
+                            التالي <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <button id="submitBtn" class="btn-success" onclick="finishTest()" style="display: none;">
+                            <i class="fas fa-flag-checkered"></i> إنهاء الاختبار
+                        </button>
+                    </div>
+
+                    <div class="keyboard-help">
+                        <div class="keyboard-item">
+                            <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd>
+                            <span>اختيار الإجابة</span>
+                        </div>
+                        <div class="keyboard-item">
+                            <kbd>←</kbd><kbd>→</kbd>
+                            <span>التنقل بين الأسئلة</span>
+                        </div>
+                        <div class="keyboard-item">
+                            <kbd>Enter</kbd>
+                            <span>التالي / الإنهاء</span>
+                        </div>
+                        <div class="keyboard-item">
+                            <kbd>Esc</kbd>
+                            <span>إنهاء المحاولة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultsContainer" class="screen results-screen">
+                <div class="results-header">
+                    <h2><i class="fas fa-chart-line"></i> نتائج الاختبار</h2>
+                    <div class="results-summary">
+                        <div class="score-display">
+                            <div class="score-circle" id="scoreCircle">
+                                <div class="score-circle-inner">
+                                    <span class="score-percent" id="scorePercent">0%</span>
+                                    <span class="score-label">النتيجة</span>
+                                </div>
+                            </div>
+                            <div class="score-status">
+                                <h3 id="passFail" class="pass">ناجح</h3>
+                                <p id="resultMessage" class="result-message">تهانينا! لقد نجحت في الاختبار التدريبي.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon correct">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="statCorrect">0</span>
+                            <span class="stat-label">صحيح</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon incorrect">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="statIncorrect">0</span>
+                            <span class="stat-label">غير صحيح</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon time">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="statTime">0:00</span>
+                            <span class="stat-label">الوقت</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon attempt">
+                            <i class="fas fa-list-ol"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="questionsAttempted">0</span>
+                            <span class="stat-label">تمت الإجابة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-details">
+                    <h4><i class="fas fa-info-circle"></i> تفاصيل الاختبار</h4>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">نوع الاختبار:</span>
+                            <span class="detail-value" id="testTypeResult">إشارات الطريق فقط</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">درجة النجاح:</span>
+                            <span class="detail-value">80%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">نتيجتك:</span>
+                            <span class="detail-value" id="yourScoreResult">0/0 (0%)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">تاريخ الإكمال:</span>
+                            <span class="detail-value" id="completionDate">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <h4><i class="fas fa-clipboard-check"></i> مراجعة الأسئلة</h4>
+                    <div id="reviewContainer" class="review-container"></div>
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn-primary btn-lg" onclick="restartTest()">
+                        <i class="fas fa-redo"></i> حاول مرة أخرى (أسئلة جديدة)
+                    </button>
+                    <button class="btn-secondary" onclick="goToStart()">
+                        <i class="fas fa-home"></i> العودة للبداية
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>© <span id="currentYear"></span> اختبار أونتاريو G1 التدريبي. مبني على دليل السائق.</p>
+                    <p class="disclaimer">هذه أداة دراسة غير رسمية. ارجع دائماً إلى دليل السائق الرسمي في أونتاريو للحصول على أحدث المعلومات.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="javascript:void(0)" onclick="showAbout()"><i class="fas fa-info-circle"></i> حول التطبيق</a>
+                    <a href="javascript:void(0)" onclick="showKeyboardShortcuts()"><i class="fas fa-keyboard"></i> الاختصارات</a>
+                    <a href="javascript:void(0)" onclick="resetProgress()"><i class="fas fa-eraser"></i> إعادة الضبط</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="quiz-data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function showAbout() {
+            alert("اختبار أونتاريو G1 التدريبي\n\nدليل دراسة كامل مبني على دليل السائق الرسمي.\nالمزايا:\n• أسئلة إشارات الطريق\n• أسئلة قواعد الطريق\n• ثلاثة أنماط اختبار\n• تغذية راجعة فورية\n• شروحات مفصلة\n• يعمل محلياً دون تسجيل دخول");
+        }
+
+        function showKeyboardShortcuts() {
+            alert("اختصارات لوحة المفاتيح:\n\nأثناء الاختبار:\n1، 2، 3، 4 - اختيار إجابة\nالسهم الأيمن - السؤال السابق\nالسهم الأيسر - السؤال التالي\nEnter - التالي أو إنهاء الاختبار\nEscape - إنهاء المحاولة\n\nشاشة البداية:\n1 - اختبار إشارات الطريق\n2 - اختبار قواعد الطريق\n3 - الاختبار الكامل\nEnter - بدء الاختبار المحدد");
+        }
+
+        function resetProgress() {
+            if (confirm("هل تريد مسح كل التقدم والبدء من جديد؟")) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
